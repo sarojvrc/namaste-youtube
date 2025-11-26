@@ -1,18 +1,28 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { toggleMenu } from "../utils/appSlice";
+import { MENU_ICON, YOUTUBE_LOGO, USER_ICON } from "../utils/constants";
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(toggleMenu());
+  };
+
   return (
     <div className="grid grid-flow-col p-5 shadow-lg">
       <div className="flex col-span-1">
         <img
-          className="h-8"
-          alt="menu"
-          src="https://img.freepik.com/premium-vector/website-navigation-hamburger-menu-icons-set-flat-website-menu-icons-with-rounded-sharp-edges_1254296-1432.jpg"
+          onClick={() => handleClick()}
+          className="h-8 cursor-pointer"
+          alt="menu-icon"
+          src={MENU_ICON}
         />
         <img
-          className="h-8 mx-2"
+          className="h-8 mx-2 cursor-pointer"
           alt="youtube-logo"
-          src="https://logos-world.net/wp-content/uploads/2020/04/YouTube-Logo.png"
+          src={YOUTUBE_LOGO}
         />
       </div>
 
@@ -28,11 +38,7 @@ const Header = () => {
       </div>
 
       <div className="col-span-1">
-        <img
-          className="h-8"
-          alt="user"
-          src="https://static.vecteezy.com/system/resources/previews/000/574/512/original/vector-sign-of-user-icon.jpg"
-        />
+        <img className="h-8" alt="user" src={USER_ICON} />
       </div>
     </div>
   );
