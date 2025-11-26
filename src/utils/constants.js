@@ -1,0 +1,3 @@
+export const MENU_ICON = "https://img.freepik.com/premium-vector/website-navigation-hamburger-menu-icons-set-flat-website-menu-icons-with-rounded-sharp-edges_1254296-1432.jpg";
+export const YOUTUBE_LOGO = "https://logos-world.net/wp-content/uploads/2020/04/YouTube-Logo.png";
+export const USER_ICON = "https://static.vecteezy.com/system/resources/previews/000/574/512/original/vector-sign-of-user-icon.jpg";
