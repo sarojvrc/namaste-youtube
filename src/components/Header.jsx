@@ -1,4 +1,3 @@
-import React from "react";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { MENU_ICON, YOUTUBE_LOGO, USER_ICON } from "../utils/constants";
