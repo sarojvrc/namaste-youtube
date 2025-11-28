@@ -26,8 +26,6 @@ const WatchPage = () => {
     getVideoData();
   }, []);
 
-  console.log(videoData?.snippet);
-
   return (
     <div className="p-2">
       <iframe
