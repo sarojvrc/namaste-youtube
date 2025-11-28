@@ -14,4 +14,15 @@ const VideoCard = ({ info }) => {
   );
 };
 
+export const AdVideoCard = ({ info }) => {
+  return (
+    <div className="shadow-lg border-4 border-red-300 rounded-xl">
+      <VideoCard info={info} />
+      <p className="bg-cyan-300 text-center p-1 cursor-pointer rounded-xl m-1">
+        Click this Ad to know more🚀
+      </p>
+    </div>
+  );
+};
+
 export default VideoCard;
