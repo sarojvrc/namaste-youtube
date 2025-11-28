@@ -11,3 +11,5 @@ export const YouTube_VIDEO_API =
 
 export const YouTube_SingleVideo_API =
   "https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=";
+export const YouTube_Search_Suggestion_API =
+  "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
