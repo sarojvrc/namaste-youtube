@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import {
   MENU_ICON,
@@ -7,21 +7,34 @@ import {
   YouTube_Search_Suggestion_API,
 } from "../utils/constants";
 import { useEffect, useState } from "react";
+import { cacheResults } from "../utils/searchSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestion, setSuggestion] = useState([]);
   const [showSuggestion, setShowSuggestion] = useState(false);
+  const searchCache = useSelector((store) => store.search);
 
   const youTubeSearchQuery = async () => {
     const searchData = await fetch(YouTube_Search_Suggestion_API + searchQuery);
     const searchJSON = await searchData.json();
     setSuggestion(searchJSON[1]);
+    dispatch(
+      cacheResults({
+        [searchQuery]: searchJSON[1],
+      })
+    );
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => youTubeSearchQuery(), 200);
+    const timer = setTimeout(() => {
+      if (searchCache[searchQuery]) {
+        setSuggestion(searchCache[searchQuery]);
+      } else {
+        youTubeSearchQuery();
+      }
+    }, 200);
     return () => {
       clearTimeout(timer);
     };
@@ -63,7 +76,7 @@ const Header = () => {
           </button>
         </div>
         {showSuggestion && (
-          <div className="fixed bg-white shadow-lg py-2 px-2 w-[34.5rem] rounded-lg border border-gray-200">
+          <div className="absolute bg-white shadow-lg py-2 px-2 w-[34.5rem] rounded-lg border border-gray-200">
             <ul>
               {suggestion.map((suggestion) => (
                 <li
