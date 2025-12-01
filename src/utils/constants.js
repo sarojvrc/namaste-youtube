@@ -8,8 +8,8 @@ export const Google_API_KEY = "AIzaSyDJgx5kNpmDhatcdgaaf9d-4uuqkNlkcX8";
 export const YouTube_VIDEO_API =
   "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key=" +
   Google_API_KEY;
-
 export const YouTube_SingleVideo_API =
   "https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=";
 export const YouTube_Search_Suggestion_API =
   "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
+export const LIVE_CHAT_COUNT = 50;
