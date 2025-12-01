@@ -4,6 +4,7 @@ import { closeMenu } from "../utils/appSlice";
 import { useSearchParams } from "react-router-dom";
 import { Google_API_KEY, YouTube_SingleVideo_API } from "../utils/constants";
 import CommentsContainer from "./CommentsContainer";
+import LiveChat from "./LiveChat";
 
 const WatchPage = () => {
   const dispatch = useDispatch();
@@ -28,22 +29,27 @@ const WatchPage = () => {
   }, []);
 
   return (
-    <div>
-      <div className="p-2">
-        <iframe
-          className="ml-10 rounded-xl"
-          width="1000"
-          height="500"
-          src={"https://www.youtube.com/embed/" + searchParam.get("v")}
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        ></iframe>
-        <h1 className="font-bold text-2xl p-2 ml-10">
-          {videoData?.snippet?.title}
-        </h1>
+    <div className="flex flex-col w-full">
+      <div className="p-2 flex w-full">
+        <div>
+          <iframe
+            className="ml-10 rounded-xl"
+            width="1000"
+            height="500"
+            src={"https://www.youtube.com/embed/" + searchParam.get("v")}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          ></iframe>
+          <h1 className="font-bold text-2xl p-2 ml-10">
+            {videoData?.snippet?.title}
+          </h1>
+        </div>
+        <div className="w-full">
+          <LiveChat />
+        </div>
       </div>
       <div className="p-2 ml-10">
         <CommentsContainer />
